@@ -124,7 +124,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url=f"https://Files_Video_Link_Bot.onrender.com/{8111980313:AAEt-3mCkBQfe3LKHBGOKN_Z9tPovGlOTyM}")
+    bot.set_webhook(url=f"https://files-video-link-bot.onrender.com/{8111980313:AAEt-3mCkBQfe3LKHBGOKN_Z9tPovGlOTyM}")
     return "Webhook set!", 200
 
 if __name__ == "__main__":
