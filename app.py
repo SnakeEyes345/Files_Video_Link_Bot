@@ -4,7 +4,7 @@ import json
 from flask import Flask, request
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-API_TOKEN = os.getenv("8111980313:AAEt-3mCkBQfe3LKHBGOKN_Z9tPovGlOTyM")
+API_TOKEN = os.getenv("API_TOKEN")  # ✅ token read from environment
 bot = telebot.TeleBot(API_TOKEN)
 server = Flask(__name__)
 
@@ -72,7 +72,7 @@ def handle_file(message):
     file_data = message.document if message.document else message.video
     file_info = bot.get_file(file_data.file_id)
     file_path = file_info.file_path
-    file_link = f"https://api.telegram.org/file/bot{8111980313:AAEt-3mCkBQfe3LKHBGOKN_Z9tPovGlOTyM}/{file_path}"
+    file_link = f"https://api.telegram.org/file/bot{API_TOKEN}/{file_path}"
 
     file_name = file_data.file_name
     file_size_mb = round(file_data.file_size / (1024 * 1024), 2)
@@ -124,7 +124,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url=f"https://files-video-link-bot.onrender.com/{8111980313:AAEt-3mCkBQfe3LKHBGOKN_Z9tPovGlOTyM}")
+    bot.set_webhook(url=f"https://files-video-link-bot.onrender.com/{API_TOKEN}")
     return "Webhook set!", 200
 
 if __name__ == "__main__":
